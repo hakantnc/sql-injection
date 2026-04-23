@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Zafiyetli E-Ticaret Sitesi</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input[type="text"] { width: 70%; padding: 10px; }
+        button { padding: 10px 20px; cursor: pointer; }
+        pre { background: #eee; padding: 10px; border-left: 4px solid #d9534f; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Ürün Arama Peli</h2>
+        <p>Aramak istediğiniz ürünü yazın:</p>
+        <input type="text" id="searchInput" placeholder="Örn: iPhone 15">
+        <button onclick="searchProduct()">Ara</button>
+
+        <h3>Sonuçlar:</h3>
+        <pre id="results">Arama sonuçları burada görünecek...</pre>
+    </div>
+
+    <script>
+        async function searchProduct() {
+            const query = document.getElementById('searchInput').value;
+            const res = await fetch(`/search?q=${encodeURIComponent(query)}`);
+            
+            if (res.ok) {
+                const data = await res.json();
+                document.getElementById('results').textContent = JSON.stringify(data, null, 2);
+            } else {
+                const text = await res.text();
+                document.getElementById('results').textContent = text;
+            }
+        }
+    </script>
+</body>
+</html>

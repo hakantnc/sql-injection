@@ -15,7 +15,7 @@ Frontend: Vanilla JS & CSS
 
 🛠️ Kurulum
 1. Veritabanı Hazırlığı
-PostgreSQL üzerinde sqli_lab adında bir veritabanı oluşturun ve aşağıdaki tabloları tanımlayın:
+PostgreSQL üzerinde sql-injection adında bir veritabanı oluşturun ve aşağıdaki tabloları tanımlayın:
 
 SQL
 -- Ürünler tablosu (Halka açık veri)
